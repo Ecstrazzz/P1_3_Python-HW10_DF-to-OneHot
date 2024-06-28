@@ -23,12 +23,17 @@ data.head()
 import random
 import pandas as pd
 
-
+# Создание списка и DataFrame
 lst = ["robot"] * 10 + ["human"] * 10
 random.shuffle(lst)
 data = pd.DataFrame({"whoAmI": lst})
+
+# Первоначальный вывод DataFrame (первые 5 элементов)
 print(data.head())
 
+# Преобразование DataFrame
 data = data.groupby(data.index).apply(lambda x: pd.Series(1, index=x["whoAmI"]))
 data = data.unstack(fill_value=0)
+
+# Окончательный вывод DataFrame
 print(data)
