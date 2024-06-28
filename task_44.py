@@ -35,5 +35,5 @@ print(data.head())
 data = data.groupby(data.index).apply(lambda x: pd.Series(1, index=x["whoAmI"]))
 data = data.unstack(fill_value=0)
 
-# Окончательный вывод DataFrame
-print(data)
+# Вывод преобразованного DataFrame (первые 5 элементов)
+print(data.head())
