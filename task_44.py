@@ -23,9 +23,12 @@ data.head()
 import random
 import pandas as pd
 
-lst = ['robot'] * 10
-lst += ['human'] * 10
+
+lst = ["robot"] * 10 + ["human"] * 10
 random.shuffle(lst)
-data = pd.DataFrame({'whoAmI':lst})
-data.head()
+data = pd.DataFrame({"whoAmI": lst})
+print(data.head())
+
+data = data.groupby(data.index).apply(lambda x: pd.Series(1, index=x["whoAmI"]))
+data = data.unstack(fill_value=0)
 print(data)
